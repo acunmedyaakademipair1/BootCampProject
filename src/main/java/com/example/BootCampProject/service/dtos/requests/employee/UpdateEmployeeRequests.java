@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateEmployeeRequests {
     private int id;
-    private int position;
+    private String position;
 
 }

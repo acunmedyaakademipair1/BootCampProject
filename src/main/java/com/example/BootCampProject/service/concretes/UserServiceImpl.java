@@ -12,6 +12,7 @@ import com.example.BootCampProject.service.dtos.responses.user.UpdateUserRespons
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -46,16 +47,40 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<GetAllUserResponses> getAll() {
-        return null;
+        return userRepository.findAll().stream()
+                .map(this::mapToResponse).collect(Collectors.toList());
     }
 
     @Override
     public UpdateUserResponses update(UpdateUserRequests updateUserRequests) {
-        return null;
+        User user = userRepository.findById(updateUserRequests.getId()).orElseThrow(()-> new RuntimeException("User not found"));
+        user.setFirstName(updateUserRequests.getFirstName());
+        user.setLastName(updateUserRequests.getLastName());
+        user.setUserName(updateUserRequests.getUserName());
+        user.setEmail(updateUserRequests.getEmail());
+        user.setDateOfBirth(updateUserRequests.getDateOfBirth());
+        user.setPassword(updateUserRequests.getPassword());
+        user.setNationalIdentity(updateUserRequests.getNationalIdentity());
+        User createUser = userRepository.save(user);
+
+        UpdateUserResponses responses = new UpdateUserResponses();
+        responses.setId(createUser.getId());
+        responses.setUserName(createUser.getUserName());
+        responses.setFirstName(createUser.getFirstName());
+        responses.setLastName(createUser.getLastName());
+        responses.setEmail(createUser.getEmail());
+        responses.setDateOfBirth(createUser.getDateOfBirth());
+        responses.setPassword(createUser.getPassword());
+        responses.setNationalIdentity(createUser.getNationalIdentity());
+        return responses;
+
+
+
     }
 
     @Override
     public void delete(int id) {
+        userRepository.deleteById(id);
 
     }
 
@@ -68,6 +93,37 @@ public class UserServiceImpl implements UserService{
     public User getByName(String name) {
         return null;
     }
+
+
+
+
+    private GetAllUserResponses mapToResponse(User user) {
+        GetAllUserResponses responses = new GetAllUserResponses();
+        responses.setId(user.getId());
+        responses.setUserName(user.getUserName());
+        responses.setFirstName(user.getFirstName());
+        responses.setLastName(user.getLastName());
+        responses.setEmail(user.getEmail());
+        responses.setDateOfBirth(user.getDateOfBirth());
+        responses.setPassword(user.getPassword());
+        responses.setNationalIdentity(user.getNationalIdentity());
+        return responses;
+    }
+
+    private GetUserResponses mapToUserResponses(User user) {
+        GetUserResponses responses = new GetUserResponses();
+        responses.setId(user.getId());
+        responses.setUserName(user.getUserName());
+        responses.setFirstName(user.getFirstName());
+        responses.setLastName(user.getLastName());
+        responses.setEmail(user.getEmail());
+        responses.setDateOfBirth(user.getDateOfBirth());
+        responses.setPassword(user.getPassword());
+        responses.setNationalIdentity(user.getNationalIdentity());
+        return responses;
+    }
+
+
 
 
 }

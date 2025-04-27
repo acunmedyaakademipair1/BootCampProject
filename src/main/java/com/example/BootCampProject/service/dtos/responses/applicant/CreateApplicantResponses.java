@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateApplicantResponses {
     private int id;
-    private int about;
+    private String about;
 }

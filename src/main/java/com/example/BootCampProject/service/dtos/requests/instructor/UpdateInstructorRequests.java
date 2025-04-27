@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateInstructorRequests {
     private int id;
-    private int  companyName;
+    private String   companyName;
 }

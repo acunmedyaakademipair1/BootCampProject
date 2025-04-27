@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 
 public class UpdateApplicantRequests {
     private int id;
-    private int about;
+    private String   about;
 
 }

@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateInstructorResponses {
     private int id;
-    private int  companyName;
+    private String  companyName;
 }
