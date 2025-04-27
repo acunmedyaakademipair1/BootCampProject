@@ -13,7 +13,7 @@ import java.util.List;
 public interface ApplicantService {
     CreateApplicantResponses add(CreateApplicantRequests requests);
     List<GetAllApplicantResponses> getAll();
-    UpdateApplicantResponses update(UpdateApplicantRequests updateUserRequests);
+    UpdateApplicantResponses update(UpdateApplicantRequests updateApplicantRequests);
     void delete(int id);
     GetApplicantResponses getByName(String name);
 }

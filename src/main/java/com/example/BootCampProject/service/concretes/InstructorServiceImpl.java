@@ -26,6 +26,7 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public CreateInstructorResponses add(CreateInstructorRequests requests) {
         Instructor instructor = new Instructor();
+        instructor.setId(requests.getId());
         instructor.setCompanyName(requests.getCompanyName());
         Instructor createdInstructor = instructorRepository.save(instructor);
 

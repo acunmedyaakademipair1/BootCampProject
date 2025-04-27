@@ -14,7 +14,7 @@ import java.util.List;
 public interface InstructorService {
     CreateInstructorResponses add(CreateInstructorRequests requests);
     List<GetAllInstructorResponses> getAll();
-    UpdateInstructorResponses update(UpdateInstructorRequests updateUserRequests);
+    UpdateInstructorResponses update(UpdateInstructorRequests updateInstructorRequests);
     void delete(int id);
     GetInstructorResponses getByName(String name);
 }

@@ -5,6 +5,7 @@ import com.example.BootCampProject.repository.EmployeeRepository;
 import com.example.BootCampProject.service.abstracts.EmployeeService;
 import com.example.BootCampProject.service.dtos.requests.employee.CreateEmployeeRequests;
 import com.example.BootCampProject.service.dtos.requests.employee.UpdateEmployeeRequests;
+import com.example.BootCampProject.service.dtos.responses.applicant.UpdateApplicantResponses;
 import com.example.BootCampProject.service.dtos.responses.employee.CreateEmployeeResponses;
 import com.example.BootCampProject.service.dtos.responses.employee.GetAllEmployeeResponses;
 import com.example.BootCampProject.service.dtos.responses.employee.GetEmployeeResponses;

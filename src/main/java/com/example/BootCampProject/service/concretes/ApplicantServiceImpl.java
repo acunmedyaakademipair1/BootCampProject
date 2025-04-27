@@ -9,10 +9,12 @@ import com.example.BootCampProject.service.dtos.responses.applicant.CreateApplic
 import com.example.BootCampProject.service.dtos.responses.applicant.GetAllApplicantResponses;
 import com.example.BootCampProject.service.dtos.responses.applicant.GetApplicantResponses;
 import com.example.BootCampProject.service.dtos.responses.applicant.UpdateApplicantResponses;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ApplicantServiceImpl implements ApplicantService {
     private ApplicantRepository applicantRepository;
     public ApplicantServiceImpl(ApplicantRepository applicantRepository) {
@@ -36,18 +38,18 @@ public class ApplicantServiceImpl implements ApplicantService {
 
         return applicantRepository.findAll().stream()
                 .map(this::mapToResponse).collect(Collectors.toList());
-                    }
+        }
 
     @Override
-    public UpdateApplicantResponses update(UpdateApplicantRequests updateUserRequests) {
+    public UpdateApplicantResponses update(UpdateApplicantRequests updateApplicantRequests) {
 
-       Applicant applicant = applicantRepository.findById(updateUserRequests.getId()).orElseThrow(()-> new RuntimeException("Applicant Not Found"));
-       applicant.setAbout(updateUserRequests.getAbout());
+       Applicant applicant = applicantRepository.findById(updateApplicantRequests.getId()).orElseThrow(()-> new RuntimeException("Applicant Not Found"));
+       applicant.setAbout(updateApplicantRequests.getAbout());
        applicantRepository.save(applicant);
 
        UpdateApplicantResponses responses = new UpdateApplicantResponses();
        responses.setId(applicant.getId());
-       responses.setAbout(updateUserRequests.getAbout());
+       responses.setAbout(updateApplicantRequests.getAbout());
        return responses;
 
 
@@ -64,14 +66,14 @@ public class ApplicantServiceImpl implements ApplicantService {
         return null;
     }
 
-    private GetApplicantResponses mapToResponse(Applicant applicant) {
-        GetApplicantResponses responses = new GetApplicantResponses();
+    private GetAllApplicantResponses mapToResponse(Applicant applicant) {
+        GetAllApplicantResponses responses = new GetAllApplicantResponses();
         responses.setId(applicant.getId());
         responses.setAbout(applicant.getAbout());
         return responses;
     }
 
-    private GetApplicantResponses maptoAplicentResponse(Applicant applicant) {
+    private GetApplicantResponses mapToApplicantResponse(Applicant applicant) {
         GetApplicantResponses responses = new GetApplicantResponses();
         responses.setId(applicant.getId());
         responses.setAbout(applicant.getAbout());

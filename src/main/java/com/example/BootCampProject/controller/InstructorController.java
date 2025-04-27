@@ -35,9 +35,6 @@ public class InstructorController {
     @PutMapping("/{uptadeInstructors}")
     @ResponseStatus(HttpStatus.OK)
     public UpdateInstructorResponses update(@RequestBody UpdateInstructorRequests request) {return instructorService.update(request);}
-    @DeleteMapping(("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void update(@PathVariable int id){
-        instructorService.delete(id);
-    }
+
+
 }

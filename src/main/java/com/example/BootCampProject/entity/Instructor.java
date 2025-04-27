@@ -8,18 +8,14 @@ import jakarta.persistence.*;
 
 public class Instructor extends User{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+
 
     @Column(name = "companyname")
     private String companyName;
 
     public Instructor() {}
 
-    public Instructor(int id, String companyName) {
-        this.id = id;
+    public Instructor(String companyName) {
         this.companyName = companyName;
     }
 
@@ -31,11 +27,4 @@ public class Instructor extends User{
         this.companyName = companyName;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
