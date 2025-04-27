@@ -3,12 +3,12 @@ package com.example.BootCampProject.service.concretes;
 import com.example.BootCampProject.entity.User;
 import com.example.BootCampProject.repository.UserRepository;
 import com.example.BootCampProject.service.abstracts.UserService;
-import com.example.BootCampProject.service.dtos.requests.user.CreateUserRequests;
-import com.example.BootCampProject.service.dtos.requests.user.UpdateUserRequests;
-import com.example.BootCampProject.service.dtos.responses.user.CreateUserResponses;
-import com.example.BootCampProject.service.dtos.responses.user.GetAllUserResponses;
-import com.example.BootCampProject.service.dtos.responses.user.GetUserResponses;
-import com.example.BootCampProject.service.dtos.responses.user.UpdateUserResponses;
+import com.example.BootCampProject.service.dtos.requests.user.CreatedUserRequest;
+import com.example.BootCampProject.service.dtos.requests.user.UpdatedUserRequest;
+import com.example.BootCampProject.service.dtos.responses.user.CreatedUserResponse;
+import com.example.BootCampProject.service.dtos.responses.user.GetAllUserResponse;
+import com.example.BootCampProject.service.dtos.responses.user.GetUserResponse;
+import com.example.BootCampProject.service.dtos.responses.user.UpdatedUserResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
         this.userRepository=userRepository;
     }
     @Override
-    public CreateUserResponses add(CreateUserRequests requests){
+    public CreatedUserResponse add(CreatedUserRequest requests){
         User user = new User();
         user.setUserName(requests.getUserName());
         user.setFirstName(requests.getFirstName());
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
         user.setNationalIdentity(requests.getNationalIdentity());
         User createUser = userRepository.save(user);
 
-        CreateUserResponses responses = new CreateUserResponses();
+        CreatedUserResponse responses = new CreatedUserResponse();
         responses.setId(createUser.getId());
         responses.setUserName(createUser.getUserName());
         responses.setFirstName(createUser.getFirstName());
@@ -46,24 +46,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<GetAllUserResponses> getAll() {
+    public List<GetAllUserResponse> getAll() {
         return userRepository.findAll().stream()
                 .map(this::mapToResponse).collect(Collectors.toList());
     }
 
     @Override
-    public UpdateUserResponses update(UpdateUserRequests updateUserRequests) {
-        User user = userRepository.findById(updateUserRequests.getId()).orElseThrow(()-> new RuntimeException("User not found"));
-        user.setFirstName(updateUserRequests.getFirstName());
-        user.setLastName(updateUserRequests.getLastName());
-        user.setUserName(updateUserRequests.getUserName());
-        user.setEmail(updateUserRequests.getEmail());
-        user.setDateOfBirth(updateUserRequests.getDateOfBirth());
-        user.setPassword(updateUserRequests.getPassword());
-        user.setNationalIdentity(updateUserRequests.getNationalIdentity());
+    public UpdatedUserResponse update(UpdatedUserRequest updatedUserRequest) {
+        User user = userRepository.findById(updatedUserRequest.getId()).orElseThrow(()-> new RuntimeException("User not found"));
+        user.setFirstName(updatedUserRequest.getFirstName());
+        user.setLastName(updatedUserRequest.getLastName());
+        user.setUserName(updatedUserRequest.getUserName());
+        user.setEmail(updatedUserRequest.getEmail());
+        user.setDateOfBirth(updatedUserRequest.getDateOfBirth());
+        user.setPassword(updatedUserRequest.getPassword());
+        user.setNationalIdentity(updatedUserRequest.getNationalIdentity());
         User createUser = userRepository.save(user);
 
-        UpdateUserResponses responses = new UpdateUserResponses();
+        UpdatedUserResponse responses = new UpdatedUserResponse();
         responses.setId(createUser.getId());
         responses.setUserName(createUser.getUserName());
         responses.setFirstName(createUser.getFirstName());
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public GetUserResponses findByUserName(String userName) {
+    public GetUserResponse findByUserName(String userName) {
         return null;
     }
 
@@ -97,8 +97,8 @@ public class UserServiceImpl implements UserService{
 
 
 
-    private GetAllUserResponses mapToResponse(User user) {
-        GetAllUserResponses responses = new GetAllUserResponses();
+    private GetAllUserResponse mapToResponse(User user) {
+        GetAllUserResponse responses = new GetAllUserResponse();
         responses.setId(user.getId());
         responses.setUserName(user.getUserName());
         responses.setFirstName(user.getFirstName());
@@ -110,8 +110,8 @@ public class UserServiceImpl implements UserService{
         return responses;
     }
 
-    private GetUserResponses mapToUserResponses(User user) {
-        GetUserResponses responses = new GetUserResponses();
+    private GetUserResponse mapToUserResponses(User user) {
+        GetUserResponse responses = new GetUserResponse();
         responses.setId(user.getId());
         responses.setUserName(user.getUserName());
         responses.setFirstName(user.getFirstName());

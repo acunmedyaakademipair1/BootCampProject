@@ -1,14 +1,12 @@
 package com.example.BootCampProject.controller;
 
 import com.example.BootCampProject.service.abstracts.UserService;
-import com.example.BootCampProject.service.dtos.requests.user.CreateUserRequests;
-import com.example.BootCampProject.service.dtos.requests.user.UpdateUserRequests;
-import com.example.BootCampProject.service.dtos.responses.user.CreateUserResponses;
-import com.example.BootCampProject.service.dtos.responses.user.DeleteUserResponses;
-import com.example.BootCampProject.service.dtos.responses.user.GetAllUserResponses;
-import com.example.BootCampProject.service.dtos.responses.user.UpdateUserResponses;
+import com.example.BootCampProject.service.dtos.requests.user.CreatedUserRequest;
+import com.example.BootCampProject.service.dtos.requests.user.UpdatedUserRequest;
+import com.example.BootCampProject.service.dtos.responses.user.CreatedUserResponse;
+import com.example.BootCampProject.service.dtos.responses.user.GetAllUserResponse;
+import com.example.BootCampProject.service.dtos.responses.user.UpdatedUserResponse;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,18 +23,18 @@ public class UserController {
 
     @GetMapping("/{getAllUsers}")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllUserResponses> getUsers(){
+    public List<GetAllUserResponse> getUsers(){
         return userService.getAll();
     }
     @PostMapping("/{createUsers}")
     @ResponseStatus(HttpStatus.CREATED) //201
-    public CreateUserResponses add(@RequestBody CreateUserRequests request){
+    public CreatedUserResponse add(@RequestBody CreatedUserRequest request){
         return userService.add(request);
     }
 
     @PutMapping("/{uptadeUsers}")
     @ResponseStatus(HttpStatus.OK)
-    public UpdateUserResponses update(@RequestBody UpdateUserRequests request){
+    public UpdatedUserResponse update(@RequestBody UpdatedUserRequest request){
         return userService.update(request);
     }
     @DeleteMapping("/{id}")

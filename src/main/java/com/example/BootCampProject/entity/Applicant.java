@@ -7,28 +7,16 @@ import jakarta.persistence.*;
 @Table(name = "applicants")
 public class Applicant extends User{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
 
     @Column(name = "about")
     private String about;
 
     public Applicant() {}
 
-    public Applicant(int id, String about) {
-        this.id = id;
+    public Applicant(String about) {
         this.about = about;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getAbout() {
         return about;

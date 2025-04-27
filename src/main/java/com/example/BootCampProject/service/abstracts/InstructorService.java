@@ -2,19 +2,19 @@ package com.example.BootCampProject.service.abstracts;
 
 
 
-import com.example.BootCampProject.service.dtos.requests.instructor.CreateInstructorRequests;
-import com.example.BootCampProject.service.dtos.requests.instructor.UpdateInstructorRequests;
-import com.example.BootCampProject.service.dtos.responses.instructor.CreateInstructorResponses;
-import com.example.BootCampProject.service.dtos.responses.instructor.GetAllInstructorResponses;
-import com.example.BootCampProject.service.dtos.responses.instructor.GetInstructorResponses;
-import com.example.BootCampProject.service.dtos.responses.instructor.UpdateInstructorResponses;
+import com.example.BootCampProject.service.dtos.requests.instructor.CreatedInstructorRequest;
+import com.example.BootCampProject.service.dtos.requests.instructor.UpdatedInstructorRequest;
+import com.example.BootCampProject.service.dtos.responses.instructor.CreatedInstructorResponse;
+import com.example.BootCampProject.service.dtos.responses.instructor.GetAllInstructorResponse;
+import com.example.BootCampProject.service.dtos.responses.instructor.GetInstructorResponse;
+import com.example.BootCampProject.service.dtos.responses.instructor.UpdatedInstructorResponse;
 
 import java.util.List;
 
 public interface InstructorService {
-    CreateInstructorResponses add(CreateInstructorRequests requests);
-    List<GetAllInstructorResponses> getAll();
-    UpdateInstructorResponses update(UpdateInstructorRequests updateInstructorRequests);
+    CreatedInstructorResponse add(CreatedInstructorRequest requests);
+    List<GetAllInstructorResponse> getAll();
+    UpdatedInstructorResponse update(UpdatedInstructorRequest updatedInstructorRequest);
     void delete(int id);
-    GetInstructorResponses getByName(String name);
+    GetInstructorResponse getByName(String name);
 }

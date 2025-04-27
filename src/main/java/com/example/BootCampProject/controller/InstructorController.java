@@ -2,12 +2,11 @@ package com.example.BootCampProject.controller;
 
 
 import com.example.BootCampProject.service.abstracts.InstructorService;
-import com.example.BootCampProject.service.dtos.requests.instructor.CreateInstructorRequests;
-import com.example.BootCampProject.service.dtos.requests.instructor.UpdateInstructorRequests;
-import com.example.BootCampProject.service.dtos.responses.instructor.CreateInstructorResponses;
-import com.example.BootCampProject.service.dtos.responses.instructor.GetAllInstructorResponses;
-import com.example.BootCampProject.service.dtos.responses.instructor.UpdateInstructorResponses;
-import com.example.BootCampProject.service.dtos.responses.user.GetAllUserResponses;
+import com.example.BootCampProject.service.dtos.requests.instructor.CreatedInstructorRequest;
+import com.example.BootCampProject.service.dtos.requests.instructor.UpdatedInstructorRequest;
+import com.example.BootCampProject.service.dtos.responses.instructor.CreatedInstructorResponse;
+import com.example.BootCampProject.service.dtos.responses.instructor.GetAllInstructorResponse;
+import com.example.BootCampProject.service.dtos.responses.instructor.UpdatedInstructorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,17 +23,20 @@ public class InstructorController {
 
     @GetMapping("/{getAllInstructors}")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllInstructorResponses> getInstructors() {
+    public List<GetAllInstructorResponse> getInstructors() {
+
         return instructorService.getAll();
     }
 
     @PostMapping("/{createInstructors}")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateInstructorResponses add(@RequestBody CreateInstructorRequests requests) {return instructorService.add(requests);}
+    public CreatedInstructorResponse add(@RequestBody CreatedInstructorRequest requests) {
+        return instructorService.add(requests);}
 
     @PutMapping("/{uptadeInstructors}")
     @ResponseStatus(HttpStatus.OK)
-    public UpdateInstructorResponses update(@RequestBody UpdateInstructorRequests request) {return instructorService.update(request);}
+    public UpdatedInstructorResponse update(@RequestBody UpdatedInstructorRequest request) {
+        return instructorService.update(request);}
 
 
 }
