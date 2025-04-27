@@ -5,11 +5,10 @@ import com.example.BootCampProject.repository.EmployeeRepository;
 import com.example.BootCampProject.service.abstracts.EmployeeService;
 import com.example.BootCampProject.service.dtos.requests.employee.CreateEmployeeRequests;
 import com.example.BootCampProject.service.dtos.requests.employee.UpdateEmployeeRequests;
-import com.example.BootCampProject.service.dtos.responses.applicant.UpdateApplicantResponses;
 import com.example.BootCampProject.service.dtos.responses.employee.CreateEmployeeResponses;
 import com.example.BootCampProject.service.dtos.responses.employee.GetAllEmployeeResponses;
 import com.example.BootCampProject.service.dtos.responses.employee.GetEmployeeResponses;
-import com.example.BootCampProject.service.dtos.responses.employee.UpdateEmpoloyeeResponses;
+import com.example.BootCampProject.service.dtos.responses.employee.UpdateEmployeeResponses;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,13 +39,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public UpdateEmpoloyeeResponses update(UpdateEmployeeRequests updateUserRequests) {
+    public UpdateEmployeeResponses update(UpdateEmployeeRequests updateUserRequests) {
 
-        Employee employee = employeeRepository.findById(updateUserRequests.getId()).orElseThrow((null) ->new RuntimeException("Employee not found"));
+        Employee employee = employeeRepository.findById(updateUserRequests.getId()).orElseThrow(() ->new RuntimeException("Employee not found"));
         employee.setPosition(updateUserRequests.getPosition());
         Employee updateEmployee = employeeRepository.save(employee);
 
-        UpdateEmpoloyeeResponses responses = new UpdateEmpoloyeeResponses();
+        UpdateEmployeeResponses responses = new UpdateEmployeeResponses();
         responses.setId(updateUserRequests.getId());
         responses.setPosition(updateUserRequests.getPosition());
         return responses;
