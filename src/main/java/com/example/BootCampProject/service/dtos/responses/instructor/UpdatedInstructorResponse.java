@@ -1,6 +1,7 @@
 package com.example.BootCampProject.service.dtos.responses.instructor;
 
 
+import com.example.BootCampProject.entity.Instructor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdatedInstructorResponse {
+    private int id;
     private String  companyName;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCompanyName() {
         return companyName;

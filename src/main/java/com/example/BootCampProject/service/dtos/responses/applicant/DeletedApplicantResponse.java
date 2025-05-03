@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class DeletedApplicantResponse {
     private int id;
 
+
     public int getId() {
         return id;
     }

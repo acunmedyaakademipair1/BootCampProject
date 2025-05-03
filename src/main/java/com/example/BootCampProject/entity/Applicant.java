@@ -5,7 +5,12 @@ import jakarta.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "applicants")
-public class Applicant extends User{
+public class Applicant {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
 
     @Column(name = "about")
     private String about;

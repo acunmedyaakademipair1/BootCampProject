@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllEmployeeResponse {
+    private int id ;
     private String position;
 
     public String getPosition() {

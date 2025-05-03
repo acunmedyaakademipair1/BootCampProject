@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdatedApplicantResponse {
+    private int id;
     private String about;
 
     public String getAbout() {

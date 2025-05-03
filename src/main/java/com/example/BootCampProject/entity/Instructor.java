@@ -6,7 +6,13 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "ınstructors")
 
-public class Instructor extends User{
+public class Instructor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
 
 
 

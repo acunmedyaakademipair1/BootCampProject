@@ -9,6 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdatedEmployeeRequest {
     private String position;
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPosition() {
         return position;
