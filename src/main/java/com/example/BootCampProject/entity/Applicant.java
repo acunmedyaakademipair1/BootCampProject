@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 @Table(name = "applicants")
 public class Applicant extends User{
 
-
     @Column(name = "about")
     private String about;
 

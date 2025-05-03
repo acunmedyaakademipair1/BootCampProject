@@ -41,6 +41,5 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable int id){
         userService.delete(id);
-
     }
 }
