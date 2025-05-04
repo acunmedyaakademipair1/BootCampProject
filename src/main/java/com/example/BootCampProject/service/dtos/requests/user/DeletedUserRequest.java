@@ -10,7 +10,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeletedUserRequest {
     private int id;
-
-
-
 }

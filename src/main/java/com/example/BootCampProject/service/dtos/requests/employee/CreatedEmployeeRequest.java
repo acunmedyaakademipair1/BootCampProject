@@ -2,7 +2,6 @@ package com.example.BootCampProject.service.dtos.requests.employee;
 
 import lombok.*;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreatedEmployeeRequest {
@@ -10,6 +9,7 @@ public class CreatedEmployeeRequest {
 
     private String position;
     public int getId() {
+
         return id;
     }
 
