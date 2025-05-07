@@ -1,6 +1,8 @@
 package com.example.BootCampProject.service.mappers;
 
+import com.example.BootCampProject.entity.Applicant;
 import com.example.BootCampProject.entity.Application;
+import com.example.BootCampProject.entity.Bootcamp;
 import com.example.BootCampProject.service.dtos.requests.application.CreatedApplicationRequest;
 import com.example.BootCampProject.service.dtos.responses.application.CreatedApplicationResponse;
 import com.example.BootCampProject.service.dtos.responses.application.GetApplicationResponse;

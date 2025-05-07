@@ -25,8 +25,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public GetApplicationResponse getById(int id) {
-        return null;
+    public CreatedApplicationResponse add(CreatedApplicationRequest request) {
+        Application application = applicationMapper.createRequestToApplication(request);
+        applicationRepository.save(application);
+        return applicationMapper.applicationToCreateResponse(application);
+
     }
 
     @Override
@@ -34,12 +37,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         return List.of();
     }
 
-    @Override
-    public CreatedApplicationResponse add(CreatedApplicationRequest request) {
-        Application application = applicationMapper.createRequestToApplication(request);
-        applicationRepository.save(application);
-        return applicationMapper.applicationToCreateResponse(application);
-    }
 
     @Override
     public UpdatedApplicationResponse update(UpdatedApplicationRequest updatedApplicationRequest) {
@@ -48,7 +45,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void delete(int id) {
-
+    applicationRepository.deleteById(id);
     }
 
-}
+    @Override
+    public GetApplicationResponse getById(int id) {
+        return null;
+    }
+
+
+    }

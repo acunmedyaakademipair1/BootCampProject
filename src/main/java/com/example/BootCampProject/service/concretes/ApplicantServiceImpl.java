@@ -9,6 +9,7 @@ import com.example.BootCampProject.service.dtos.responses.applicant.CreatedAppli
 import com.example.BootCampProject.service.dtos.responses.applicant.GetAllApplicantResponse;
 import com.example.BootCampProject.service.dtos.responses.applicant.GetApplicantResponse;
 import com.example.BootCampProject.service.dtos.responses.applicant.UpdatedApplicantResponse;
+import com.example.BootCampProject.service.mappers.ApplicantMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +17,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ApplicantServiceImpl implements ApplicantService {
-    private ApplicantRepository applicantRepository;
-    public ApplicantServiceImpl(ApplicantRepository applicantRepository) {
+    private final ApplicantRepository applicantRepository;
+    private final ApplicantMapper applicantMapper;
+
+    public ApplicantServiceImpl(ApplicantRepository applicantRepository, ApplicantMapper applicantMapper) {
         this.applicantRepository = applicantRepository;
+        this.applicantMapper = applicantMapper;
     }
 
     @Override

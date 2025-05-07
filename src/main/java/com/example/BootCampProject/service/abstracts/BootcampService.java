@@ -15,4 +15,6 @@ public interface BootcampService {
     CreatedBootcampResponse add(CreatedBootcampRequest request);
     UpdatedBootcampResponse update(UpdatedBootcampRequest updatedBootcampRequest);
     void delete(int id);
+
+    CreatedBootcampResponse create(CreatedBootcampRequest request);
 }
