@@ -13,14 +13,14 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface BlacklistMapper {
 
-    @Mapping(target = "applicantId", source = "applicantId")
+    @Mapping(target = "applicationId", source = "applicationId")
     @Mapping(target = "reason", source = "reason")
     @Mapping(target = "date", source = "date")
     Blacklist createRequestToBlacklist(CreatedBlacklistRequest request);
     Blacklist updateRequestToBlacklist(UpdatedBlacklistRequest request);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "applicantId", source = "applicantId")
+    @Mapping(target = "applicationId", source = "applicationId")
     @Mapping(target = "reason", source = "reason")
     @Mapping(target = "date", source = "date")
     GetBlacklistResponse blacklistToGetResponse(Blacklist blacklist);

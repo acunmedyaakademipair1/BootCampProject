@@ -12,16 +12,12 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface ApplicantMapper {
-    @Mapping(target = "applications", source = "applications")
     @Mapping(target = "about", source = "about")
-    @Mapping(target = "blacklist", source = "blacklist")
     Applicant createRequestToApplicant(CreatedApplicantRequest request);
     Applicant updateRequestToApplicant(UpdatedApplicantRequest request);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "applications", source = "applications")
     @Mapping(target = "about", source = "about")
-    @Mapping(target = "blacklist", source = "blacklist")
     GetApplicantResponse applicantToGetResponse(Applicant applicant);
     GetAllApplicantResponse applicantToGetAllResponse(Applicant applicant);
     CreatedApplicantResponse applicantToCreateResponse(Applicant applicant);

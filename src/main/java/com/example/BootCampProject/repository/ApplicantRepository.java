@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ApplicantRepository extends JpaRepository<Applicant, Integer> {
     Optional<Applicant> findByName(String name);
 
+
 }

@@ -15,7 +15,7 @@ public class Instructor {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "companyname")
+    @Column(name = "companyName")
     private String companyName;
 
     @OneToMany
