@@ -26,49 +26,41 @@ public class ApplicantServiceImpl implements ApplicantService {
     }
 
     @Override
-    public CreatedApplicantResponse add(CreatedApplicantRequest requests) {
-        Applicant applicant = new Applicant();
-        applicant.setAbout(requests.getAbout());
-        Applicant createdApplicant = applicantRepository.save(applicant);
-
-        CreatedApplicantResponse responses = new CreatedApplicantResponse();
-        responses.setAbout(requests.getAbout());
-        return responses;
+    public GetApplicantResponse getByName(String name) {
+        Applicant applicant = applicantRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("Applicant not found with name: " + name));
+        return applicantMapper.applicantToGetResponse(applicant);
     }
-
 
     @Override
     public List<GetAllApplicantResponse> getAll() {
-
-        return applicantRepository.findAll().stream()
-                .map(this::mapToResponse).collect(Collectors.toList());
-        }
+        List<Applicant> applicants = applicantRepository.findAll();
+        return applicants.stream()
+                .map(applicantMapper::applicantToGetAllResponse)
+                .toList();
+    }
 
     @Override
-    public UpdatedApplicantResponse update(UpdatedApplicantRequest requests) {
+    public CreatedApplicantResponse add(CreatedApplicantRequest requests) {
+        Applicant applicant = applicantMapper.createRequestToApplicant(requests);
+        applicantRepository.save(applicant);
+        return applicantMapper.applicantToCreateResponse(applicant);
+    }
 
-      Applicant applicant = new Applicant();
-      applicant.setAbout(requests.getAbout());
-       Applicant updateApplicant = applicantRepository.save(applicant);
-
-       UpdatedApplicantResponse responses = new UpdatedApplicantResponse();
-
-       responses.setAbout(requests.getAbout());
-       return responses;
-
-
+    @Override
+    public UpdatedApplicantResponse update(UpdatedApplicantRequest updatedApplicantRequest) {
+        Applicant applicant = applicantMapper.updateRequestToApplicant(updatedApplicantRequest);
+        applicantRepository.save(applicant);
+        return applicantMapper.applicantToUpdateResponse(applicant);
     }
 
 
     @Override
-    public void delete(int id) {
-        applicantRepository.deleteById(id);
+    public void delete(String name) {
+        Applicant applicant = applicantRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("Applicant not found with name: " + name));
+        applicantRepository.delete(applicant);
 
-    }
-
-    @Override
-    public GetApplicantResponse getByName(String name) {
-        return null;
     }
 
     private GetAllApplicantResponse mapToResponse(Applicant applicant) {

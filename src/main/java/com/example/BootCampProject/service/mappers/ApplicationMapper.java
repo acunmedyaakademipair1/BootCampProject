@@ -4,8 +4,11 @@ import com.example.BootCampProject.entity.Applicant;
 import com.example.BootCampProject.entity.Application;
 import com.example.BootCampProject.entity.Bootcamp;
 import com.example.BootCampProject.service.dtos.requests.application.CreatedApplicationRequest;
+import com.example.BootCampProject.service.dtos.requests.application.UpdatedApplicationRequest;
 import com.example.BootCampProject.service.dtos.responses.application.CreatedApplicationResponse;
+import com.example.BootCampProject.service.dtos.responses.application.GetAllApplicationResponse;
 import com.example.BootCampProject.service.dtos.responses.application.GetApplicationResponse;
+import com.example.BootCampProject.service.dtos.responses.application.UpdatedApplicationResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -16,16 +19,17 @@ public interface ApplicationMapper {
     @Mapping(target = "bootcampId", source = "bootcampId")
     @Mapping(target = "applicationState", constant = "PENDING")
     Application createRequestToApplication(CreatedApplicationRequest request);
+    Application updateRequestToApplication(UpdatedApplicationRequest request);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "applicantId", source = "applicantId")
     @Mapping(target = "bootcampId", source = "bootcampId")
     @Mapping(target = "applicationState", source = "applicationState")
-    GetApplicationResponse applicationToGetApplicationResponse(Application application);
-
-
-
+    GetApplicationResponse applicationToGetResponse(Application application);
+    GetAllApplicationResponse applicationToGetAllResponse(Application application);
     CreatedApplicationResponse applicationToCreateResponse(Application application);
+    UpdatedApplicationResponse applicationToUpdateResponse(Application application);
+
 
     default Applicant map(int applicantId) {
         Applicant applicant = new Applicant();

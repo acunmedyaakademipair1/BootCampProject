@@ -14,6 +14,6 @@ public interface ApplicantService {
     CreatedApplicantResponse add(CreatedApplicantRequest requests);
     List<GetAllApplicantResponse> getAll();
     UpdatedApplicantResponse update(UpdatedApplicantRequest updatedApplicantRequests);
-    void delete(int id);
+    void delete(String name);
     GetApplicantResponse getByName(String name);
 }

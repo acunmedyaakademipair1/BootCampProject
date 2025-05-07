@@ -8,6 +8,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "applicants")
 public class Applicant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -21,6 +22,16 @@ public class Applicant {
 
     @OneToMany
     private List<Blacklist> blacklist;
+
+    public Applicant() {
+    }
+
+    public Applicant(int id, List<Application> applications, String about, List<Blacklist> blacklist) {
+        this.id = id;
+        this.applications = applications;
+        this.about = about;
+        this.blacklist = blacklist;
+    }
 
     public int getId() {
         return id;
@@ -51,16 +62,6 @@ public class Applicant {
     }
 
     public void setBlacklist(List<Blacklist> blacklist) {
-        this.blacklist = blacklist;
-    }
-
-    public Applicant() {
-    }
-
-    public Applicant(int id, List<Application> applications, String about, List<Blacklist> blacklist) {
-        this.id = id;
-        this.applications = applications;
-        this.about = about;
         this.blacklist = blacklist;
     }
 }

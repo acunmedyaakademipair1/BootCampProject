@@ -25,33 +25,39 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public CreatedApplicationResponse add(CreatedApplicationRequest request) {
-        Application application = applicationMapper.createRequestToApplication(request);
-        applicationRepository.save(application);
-        return applicationMapper.applicationToCreateResponse(application);
-
+    public GetApplicationResponse getById(int id) {
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Application not found with id: " + id));
+        return applicationMapper.applicationToGetResponse(application);
     }
 
     @Override
     public List<GetAllApplicationResponse> getAll() {
-        return List.of();
+        List<Application> applications = applicationRepository.findAll();
+        return applications.stream()
+                .map(applicationMapper::applicationToGetAllResponse)
+                .toList();
+    }
+
+    @Override
+    public CreatedApplicationResponse add(CreatedApplicationRequest request) {
+        Application application = applicationMapper.createRequestToApplication(request);
+        applicationRepository.save(application);
+        return applicationMapper.applicationToCreateResponse(application);
     }
 
 
     @Override
     public UpdatedApplicationResponse update(UpdatedApplicationRequest updatedApplicationRequest) {
-        return null;
+        Application application = applicationMapper.updateRequestToApplication(updatedApplicationRequest);
+        applicationRepository.save(application);
+        return applicationMapper.applicationToUpdateResponse(application);
     }
 
     @Override
     public void delete(int id) {
-    applicationRepository.deleteById(id);
+        Application application = applicationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Application not found with id: " + id));
+        applicationRepository.delete(application);
     }
-
-    @Override
-    public GetApplicationResponse getById(int id) {
-        return null;
-    }
-
-
-    }
+}

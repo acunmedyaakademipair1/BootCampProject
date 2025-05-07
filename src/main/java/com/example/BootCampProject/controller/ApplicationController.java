@@ -21,22 +21,22 @@ import java.util.List;
             this.applicationService = applicationService;
         }
 
-        @PostMapping
+        @PostMapping("/applicationadd")
         public CreatedApplicationResponse add(@RequestBody CreatedApplicationRequest request) {
             return applicationService.add(request);
         }
 
-        @PutMapping
+        @PutMapping("/applicationupdate")
         public UpdatedApplicationResponse update(@RequestBody UpdatedApplicationRequest request) {
             return applicationService.update(request);
         }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/delete/{id}")
         public void delete(@PathVariable int id) {
             applicationService.delete(id);
         }
 
-        @GetMapping
+        @GetMapping("/applicationgetall")
         public List<GetAllApplicationResponse> getAll() {
             return applicationService.getAll();
         }
