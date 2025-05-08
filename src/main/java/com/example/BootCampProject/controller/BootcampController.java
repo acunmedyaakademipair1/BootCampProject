@@ -8,16 +8,22 @@ import com.example.BootCampProject.service.dtos.responses.bootcamp.GetAllBootcam
 import com.example.BootCampProject.service.dtos.responses.bootcamp.GetBootcampResponse;
 import com.example.BootCampProject.service.dtos.responses.bootcamp.UpdatedBootcampResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/bootcamps")
-@RequiredArgsConstructor
+
 public class BootcampController {
 
     private final BootcampService bootcampService;
+
+    @Autowired  // Constructor injection
+    public BootcampController(BootcampService bootcampService) {
+        this.bootcampService = bootcampService;
+    }
 
     @PostMapping
     public CreatedBootcampResponse create(@RequestBody CreatedBootcampRequest request) {

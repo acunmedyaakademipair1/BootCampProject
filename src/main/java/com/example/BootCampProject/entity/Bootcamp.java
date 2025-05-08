@@ -35,6 +35,7 @@ public class Bootcamp {
     @OneToMany(mappedBy ="bootcamp")
     private List<Application> application;
 
+
     public int getId() {
         return id;
     }

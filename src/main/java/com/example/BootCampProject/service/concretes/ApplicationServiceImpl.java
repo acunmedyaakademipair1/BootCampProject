@@ -10,6 +10,7 @@ import com.example.BootCampProject.service.dtos.responses.application.GetAllAppl
 import com.example.BootCampProject.service.dtos.responses.application.GetApplicationResponse;
 import com.example.BootCampProject.service.dtos.responses.application.UpdatedApplicationResponse;
 import com.example.BootCampProject.service.mappers.ApplicationMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     private final ApplicationRepository applicationRepository;
     private final ApplicationMapper applicationMapper;
 
+
+
+
+    @Autowired
     public ApplicationServiceImpl(ApplicationRepository applicationRepository, ApplicationMapper applicationMapper) {
         this.applicationRepository = applicationRepository;
         this.applicationMapper = applicationMapper;
@@ -45,7 +50,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         applicationRepository.save(application);
         return applicationMapper.applicationToCreateResponse(application);
     }
-
 
     @Override
     public UpdatedApplicationResponse update(UpdatedApplicationRequest updatedApplicationRequest) {

@@ -8,6 +8,7 @@ import com.example.BootCampProject.service.dtos.responses.blacklist.GetAllBlackl
 import com.example.BootCampProject.service.dtos.responses.blacklist.GetBlacklistResponse;
 import com.example.BootCampProject.service.dtos.responses.blacklist.UpdatedBlacklistResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,12 @@ import java.util.List;
 public class BlacklistController {
 
     private final BlacklistService blacklistService;
+
+
+    @Autowired  // Constructor injection
+    public BlacklistController(BlacklistService blacklistService) {
+        this.blacklistService = blacklistService;
+    }
 
     @PostMapping
     public CreatedBlacklistResponse create(@RequestBody CreatedBlacklistRequest request) {

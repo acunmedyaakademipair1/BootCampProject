@@ -6,6 +6,7 @@ import com.example.BootCampProject.service.dtos.responses.blacklist.CreatedBlack
 import com.example.BootCampProject.service.dtos.responses.blacklist.GetAllBlacklistResponse;
 import com.example.BootCampProject.service.dtos.responses.blacklist.GetBlacklistResponse;
 import com.example.BootCampProject.service.dtos.responses.blacklist.UpdatedBlacklistResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

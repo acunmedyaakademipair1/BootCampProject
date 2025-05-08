@@ -13,35 +13,42 @@ public class Application {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicantId",nullable = false)
+    @JoinColumn(name = "applicantId", nullable = false)
     private Applicant applicantId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bootCampId")
-    private Bootcamp bootcampId;
+    @ManyToOne
+    @JoinColumn(name = "bootcamp_id")
+    private Bootcamp bootcamp;
 
 
     @Enumerated(EnumType.STRING)
     @Column(name = "state", nullable = false)
     private ApplicationState applicationState;
 
-
     public Application() {
     }
 
-    public Application(int id, Applicant applicantId, Bootcamp bootcampId, ApplicationState state) {
+    public Application(int id, Applicant applicantId, Bootcamp bootcamp, ApplicationState applicationState) {
         this.id = id;
         this.applicantId = applicantId;
-        this.bootcampId = bootcampId;
-        this.applicationState = state;
+        this.bootcamp = bootcamp;
+        this.applicationState = applicationState;
     }
 
-    public int getId() {
-        return id;
+    public ApplicationState getApplicationState() {
+        return applicationState;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setApplicationState(ApplicationState applicationState) {
+        this.applicationState = applicationState;
+    }
+
+    public Bootcamp getBootcamp() {
+        return bootcamp;
+    }
+
+    public void setBootcamp(Bootcamp bootcamp) {
+        this.bootcamp = bootcamp;
     }
 
     public Applicant getApplicantId() {
@@ -52,19 +59,14 @@ public class Application {
         this.applicantId = applicantId;
     }
 
-    public Bootcamp getBootcampId() {
-        return bootcampId;
+    public int getId() {
+        return id;
     }
 
-    public void setBootcampId(Bootcamp bootcampId) {
-        this.bootcampId = bootcampId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public ApplicationState getApplicationState() {
-        return applicationState;
-    }
 
-    public void setApplicationState(ApplicationState applicationState) {
-        this.applicationState = applicationState;
-    }
 }
+

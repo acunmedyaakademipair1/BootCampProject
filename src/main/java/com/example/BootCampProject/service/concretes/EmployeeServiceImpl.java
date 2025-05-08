@@ -59,7 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public GetEmployeeResponse getByName(String name) {
-        Employee employee = employeeRepository.findByName(name)
+        Employee employee = employeeRepository.findByPosition(name)
                 .orElseThrow(() -> new RuntimeException("Employee not found with name: " + name));
         return employeeMapper.employeeToGetResponse(employee);
     }

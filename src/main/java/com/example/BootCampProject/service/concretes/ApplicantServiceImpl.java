@@ -10,6 +10,7 @@ import com.example.BootCampProject.service.dtos.responses.applicant.GetAllApplic
 import com.example.BootCampProject.service.dtos.responses.applicant.GetApplicantResponse;
 import com.example.BootCampProject.service.dtos.responses.applicant.UpdatedApplicantResponse;
 import com.example.BootCampProject.service.mappers.ApplicantMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class ApplicantServiceImpl implements ApplicantService {
     private final ApplicantRepository applicantRepository;
     private final ApplicantMapper applicantMapper;
 
+
+    @Autowired
     public ApplicantServiceImpl(ApplicantRepository applicantRepository, ApplicantMapper applicantMapper) {
         this.applicantRepository = applicantRepository;
         this.applicantMapper = applicantMapper;
@@ -27,7 +30,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 
     @Override
     public GetApplicantResponse getByName(String name) {
-        Applicant applicant = applicantRepository.findByName(name)
+        Applicant applicant = applicantRepository.findByAbout(name)
                 .orElseThrow(() -> new RuntimeException("Applicant not found with name: " + name));
         return applicantMapper.applicantToGetResponse(applicant);
     }
@@ -54,28 +57,10 @@ public class ApplicantServiceImpl implements ApplicantService {
         return applicantMapper.applicantToUpdateResponse(applicant);
     }
 
-
     @Override
     public void delete(String name) {
-        Applicant applicant = applicantRepository.findByName(name)
+        Applicant applicant = applicantRepository.findByAbout(name)
                 .orElseThrow(() -> new RuntimeException("Applicant not found with name: " + name));
         applicantRepository.delete(applicant);
-
-    }
-
-    private GetAllApplicantResponse mapToResponse(Applicant applicant) {
-        GetAllApplicantResponse responses = new GetAllApplicantResponse();
-
-        responses.setAbout(applicant.getAbout());
-        return responses;
-    }
-
-    private GetApplicantResponse mapToApplicantResponse(Applicant applicant) {
-        GetApplicantResponse responses = new GetApplicantResponse();
-
-        responses.setAbout(applicant.getAbout());
-        return responses;
     }
 }
-
-

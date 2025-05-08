@@ -10,6 +10,14 @@ public class GetApplicationResponse {
     private Bootcamp bootcampId;
     private ApplicationState applicationState;
 
+    public Bootcamp getBootcampId() {
+        return bootcampId;
+    }
+
+    public void setBootcampId(Bootcamp bootcampId) {
+        this.bootcampId = bootcampId;
+    }
+
     public int getId() {
         return id;
     }
@@ -26,29 +34,11 @@ public class GetApplicationResponse {
         this.applicantId = applicantId;
     }
 
-    public Bootcamp getBootcampId() {
-        return bootcampId;
-    }
-
-    public void setBootcampId(Bootcamp bootcampId) {
-        this.bootcampId = bootcampId;
-    }
-
     public ApplicationState getApplicationState() {
         return applicationState;
     }
 
     public void setApplicationState(ApplicationState applicationState) {
-        this.applicationState = applicationState;
-    }
-
-    public GetApplicationResponse() {
-    }
-
-    public GetApplicationResponse(int id, Applicant applicantId, Bootcamp bootcampId, ApplicationState applicationState) {
-        this.id = id;
-        this.applicantId = applicantId;
-        this.bootcampId = bootcampId;
         this.applicationState = applicationState;
     }
 }

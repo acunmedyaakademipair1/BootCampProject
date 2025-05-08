@@ -15,34 +15,37 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface ApplicationMapper {
 
-    @Mapping(target = "applicantId", source = "applicantId")
-    @Mapping(target = "bootcampId", source = "bootcampId")
+    @Mapping(target = "bootcamp", expression = "java(new Bootcamp(request.getBootcampId()))")
     @Mapping(target = "applicationState", constant = "PENDING")
     Application createRequestToApplication(CreatedApplicationRequest request);
+
+    @Mapping(target = "bootcamp", expression = "java(new Bootcamp(request.getBootcampId()))")
+    @Mapping(target = "applicationState", constant = "PENDING")
     Application updateRequestToApplication(UpdatedApplicationRequest request);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "applicantId", source = "applicantId")
-    @Mapping(target = "bootcampId", source = "bootcampId")
+    @Mapping(target = "bootcamp", expression = "java(new Bootcamp(application.getBootcampId()))")
     @Mapping(target = "applicationState", source = "applicationState")
     GetApplicationResponse applicationToGetResponse(Application application);
+
     GetAllApplicationResponse applicationToGetAllResponse(Application application);
+
     CreatedApplicationResponse applicationToCreateResponse(Application application);
+
     UpdatedApplicationResponse applicationToUpdateResponse(Application application);
 
-
-    default Applicant map(int applicantId) {
+    // Applicant dönüşüm metodu
+    @Mapping(target = "applicant", source = "applicantId")
+    default Applicant mapApplicant(int applicantId) {
         Applicant applicant = new Applicant();
         applicant.setId(applicantId);
         return applicant;
     }
 
-    default Bootcamp mapBootcamp(int bootcampId) {
+    @Mapping(target = "bootcamp",source = "bootCampId")
+    default Bootcamp mapBootcamp(Application application) {
         Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setId(bootcampId);
+        bootcamp.setId(application.getId());
         return bootcamp;
     }
-
-
 }
-
