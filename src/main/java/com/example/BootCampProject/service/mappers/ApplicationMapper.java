@@ -15,16 +15,13 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface ApplicationMapper {
 
-    @Mapping(target = "bootcamp", expression = "java(new Bootcamp(request.getBootcampId()))")
+    @Mapping(target = "bootcampId", expression = "java(new Bootcamp(application.getBootcampId()))")
     @Mapping(target = "applicationState", constant = "PENDING")
     Application createRequestToApplication(CreatedApplicationRequest request);
-
-    @Mapping(target = "bootcamp", expression = "java(new Bootcamp(request.getBootcampId()))")
-    @Mapping(target = "applicationState", constant = "PENDING")
     Application updateRequestToApplication(UpdatedApplicationRequest request);
 
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "bootcamp", expression = "java(new Bootcamp(application.getBootcampId()))")
+    @Mapping(target = "bootcampId", expression = "java(new Bootcamp(application.getBootcampId()))")
     @Mapping(target = "applicationState", source = "applicationState")
     GetApplicationResponse applicationToGetResponse(Application application);
 
@@ -42,7 +39,7 @@ public interface ApplicationMapper {
         return applicant;
     }
 
-    @Mapping(target = "bootcamp",source = "bootCampId")
+    @Mapping(target = "bootcamp",source = "bootcampId")
     default Bootcamp mapBootcamp(Application application) {
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setId(application.getId());
