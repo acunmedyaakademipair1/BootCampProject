@@ -13,4 +13,9 @@ public interface ApplicantRepository extends JpaRepository<Applicant, Integer> {
     Optional<Applicant>CheckIfBlacklisted(int applicantId);
     Optional<Applicant>CheckIfApplicantExists(int applicantId);
 
+    Object IsBlacklisted(int applicantId);
+
+    Object GetByNationalId(int nationalIdentity);
+
+    Object GetById(int applicantId);
 }
