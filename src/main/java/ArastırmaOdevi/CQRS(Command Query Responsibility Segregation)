@@ -1,0 +1,47 @@
+CQRS (Command Query Responsibility Segregation)
+Tanım ve Temel Prensipleri
+CQRS, veri okuma ve yazma işlemlerinin birbirinden ayrıldığı bir yazılım mimarisidir. Karmaşık sistemlerde performans ve ölçeklenebilirliği artırmak için kullanılır.
+
+Katmanlar ve Bağımlılıklar
+
+Command tarafı: veri yazma işlemleri (create, update, delete)
+
+Query tarafı: veri okuma işlemleri (get, list, filter)
+Command ve Query işlemleri ayrı sorumluluklara sahiptir, bağımsız olarak ele alınabilir.
+
+Avantajları ve Zorlukları
+Avantajları:
+
+Performans ve ölçeklenebilirlik artar
+
+Veri modeli sorgulara göre sadeleşebilir
+
+Büyük sistemlerde kod karmaşıklığını azaltır
+
+Zorlukları:
+
+Veri tutarlılığı yönetimi zor olabilir
+
+Karmaşık yapılar ve ekstra kod gerektirebilir
+
+Her projede gerekli olmayabilir
+
+Gerçek Hayatta Nasıl Kullanılır?
+Event Sourcing, mikroservisler, yüksek trafikli sistemler, e-ticaret ve finans uygulamalarında tercih edilir.
+
+Farklılıkları ve Benzerlikleri
+Benzerlikler
+
+Hepsi, yazılımın sorumluluklarını ayırarak karmaşıklığı azaltmayı hedefler.
+
+Test edilebilirliği ve sürdürülebilirliği artırır.
+
+Katmanlı ve bağımsız mimari yapısına sahiptir.
+
+Farklılıklar
+
+Clean Architecture ve Onion Architecture katmanlı yapıya sahiptir, CQRS ise veri akışına göre ayrım yapar.
+
+CQRS daha çok veri işlemleri üzerine odaklanır, diğerleri tüm yazılım mimarisini kapsar.
+
+Onion Architecture domain merkezlidir, Clean Architecture daha genel kurallarla içten dışa doğru yapı kurar.

@@ -1,0 +1,32 @@
+Onion Architecture
+Tanım ve Temel Prensipleri
+Onion Architecture, Jeffrey Palermo tarafından önerilen, iş mantığını merkeze koyan ve katmanlar arasında sıkı bağımlılıkları önleyen bir yapıdır. İç katmanlar dış katmanlardan etkilenmez.
+
+Katmanlar ve Bağımlılıklar
+
+Domain (Entity, Domain Service, Interface)
+
+Application Services
+
+Infrastructure (Repository, veritabanı bağlantıları)
+
+UI (en dış katman)
+Tüm bağımlılıklar merkeze yani domain katmanına doğrudur.
+
+Avantajları ve Zorlukları
+Avantajları:
+
+Domain merkezli tasarım
+
+Test edilebilirliği artırır
+
+Gevşek bağlılık sayesinde sürdürülebilirlik sağlar
+
+Zorlukları:
+
+Repository ve servis katmanları soyutlaması zaman alabilir
+
+Başlangıç için yapılandırması karmaşık olabilir
+
+Gerçek Hayatta Nasıl Kullanılır?
+Özellikle .NET ve C# tabanlı projelerde yaygın olarak kullanılır. Mikroservis ve katmanlı mimari gerektiren yapılarda tercih edilir.

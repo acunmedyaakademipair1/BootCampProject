@@ -1,0 +1,32 @@
+Clean Architecture
+Tanım ve Temel Prensipleri
+Clean Architecture, Robert C. Martin tarafından geliştirilen, bağımsız ve sürdürülebilir sistemler oluşturmayı amaçlayan bir mimaridir. Katmanlı yapıdadır ve bağımlılıklar her zaman dıştan içe doğru olmalıdır. En içte iş kuralları yer alır.
+
+Katmanlar ve Bağımlılıklar
+
+Entities (iş kuralları ve domain nesneleri)
+
+Use Cases (uygulama kuralları)
+
+Interface Adapters (DTO, Controller, Mapper)
+
+Frameworks & Drivers (UI, veritabanı, web)
+Bağımlılıklar yalnızca dıştan içe yöneliktir.
+
+Avantajları ve Zorlukları
+Avantajları:
+
+Test edilebilirliği yüksek
+
+Bağımsız katmanlar sayesinde sürdürülebilir
+
+Platform bağımsızlığı sağlar
+
+Zorlukları:
+
+Öğrenmesi karmaşık olabilir
+
+Yapı ilk bakışta karışık gelebilir
+
+Gerçek Hayatta Nasıl Kullanılır?
+Kurumsal uygulamalarda, mikroservislerde ve büyük ölçekli projelerde tercih edilir. Java, C#, .NET gibi dillerde yaygındır.
